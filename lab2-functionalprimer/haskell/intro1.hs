@@ -25,5 +25,12 @@ r11 = zip [1..3] (map sqrt [1..2])
 
 r12 = print [1..3]
 
+-- map is a function that takes two parameters: a function and a list of elements.
+plusOne :: Int -> Int
+plusOne x = x + 1
+
+xs = [1,2,3,4,5,6]
+ys = map plusOne xs
+
 main :: IO ()
 main = pure ()

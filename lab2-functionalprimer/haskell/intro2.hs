@@ -1,9 +1,15 @@
 module Intro2 where
 -- test Comment
 -- String algebra:
-name = "Alice"
+-- name = "Alice"
 -- "if" has a special syntax but otherwise a typed version of Lisp's "if":
-name2 = if name /= "" then name else "no name"
+
+name = ""
+name2 = if name /= "" then name else "no name" --(/= means not equal to)
+askName = do
+  putStrLn "What is your name?"
+  name <- getLine
+  return()
 
 pname3 = print "Bob"
 
@@ -20,14 +26,17 @@ prg1' = sequence_ [print "hello ", print name]
 
 -- one imperative program passing value to another:
 prg2 = do
+  print "type something:"
   line <- getLine
   putStrLn ("you typed: " ++ line)
 
 main =
   do
+  askName
+
   putStrLn name -- like print, but only for strings
   -- putStrLn pname3 -- Couldn't match type ...; Expected type: String; Actual type: IO ()
-  pname3 -- in Lisp: eval pname3
+  -- pname3 -- in Lisp: eval pname3
   myprogram; prg1; prg2 -- sequencing, like 3 lines
 
 
@@ -36,7 +45,7 @@ toString value = show value
 
 -- string concatenation:
 greet1 = "hello " ++ name ++ (toString 123)
--- the same, but with the operator as a function (like Lisp):
+-- -- the same, but with the operator as a function (like Lisp):
 greet2 = (++) "hello " name
--- concatenating more than 2 strings:
+-- -- concatenating more than 2 strings:
 greet3 = concat ["hello ", name, toString 123]
